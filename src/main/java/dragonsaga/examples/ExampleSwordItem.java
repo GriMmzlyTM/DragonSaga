@@ -1,4 +1,4 @@
-package examplemod.examples;
+package dragonsaga.examples;
 
 import necesse.inventory.item.toolItem.swordToolItem.CustomSwordToolItem;
 

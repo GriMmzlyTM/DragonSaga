@@ -17,3 +17,17 @@ examplemob=Example Mob
 
 [buff]
 examplebuff=Example Buff
+
+[ui]
+settingstest=Amazing Modded UI Button
+
+[tooltip]
+settingstest=Isn't this a beautiful name?
+
+[dragonstats]
+hp=HP
+def=Def
+atk=Atk
+ki=Ki
+spd=Spd
+modifierlabel=Stat Modifiers

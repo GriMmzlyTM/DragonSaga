@@ -1,4 +1,4 @@
-package examplemod.examples;
+package dragonsaga.examples;
 
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffModifiers;

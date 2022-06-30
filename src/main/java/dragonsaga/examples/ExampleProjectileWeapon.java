@@ -1,4 +1,4 @@
-package examplemod.examples;
+package dragonsaga.examples;
 
 import necesse.engine.Screen;
 import necesse.engine.localization.Localization;

@@ -1,6 +1,6 @@
-package examplemod;
+package dragonsaga;
 
-import examplemod.examples.*;
+import dragonsaga.examples.*;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
