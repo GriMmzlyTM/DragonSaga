@@ -1,5 +1,7 @@
 package dragonsaga.ui;
 
+import dragonsaga.ui.components.FormHorizontalFloatScroll;
+import dragonsaga.ui.models.StatElementData;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.gfx.forms.Form;
 import necesse.gfx.forms.components.*;
@@ -23,7 +25,7 @@ public class RaceChangeStatForm extends Form {
         this.setPosition(x, y);
         this.drawBase = false;
         this.scrollX = width - 60;
-        this.scrollWidth = 40;
+        this.scrollWidth = 50;
 
         FormFlow scrollFlow = new FormFlow(5);
 
@@ -38,12 +40,13 @@ public class RaceChangeStatForm extends Form {
         scrollFlow.next(5);
 
         this.setHeight(scrollFlow.next());
+
     }
 
     private StatElementData DrawStatElement(LocalMessage labelMessage, FormFlow scrollFlow) {
         StatElementData data = new StatElementData();
         data.label = this.addComponent(new FormLocalLabel(labelMessage, new FontOptions(12), FormLabel.ALIGN_LEFT, 20, scrollFlow.next()));
-        data.value = this.addComponent(new FormHorizontalIntScroll(scrollX, scrollFlow.next(20), scrollWidth, FormHorizontalScroll.DrawOption.value, "", 2, 1, 3));
+        data.value = this.addComponent(new FormHorizontalFloatScroll(scrollX, scrollFlow.next(20), scrollWidth, FormHorizontalScroll.DrawOption.value, "", 2, 1, 3));
         return data;
     }
 }

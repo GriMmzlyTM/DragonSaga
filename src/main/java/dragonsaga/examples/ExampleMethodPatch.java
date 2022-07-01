@@ -1,6 +1,10 @@
 package dragonsaga.examples;
 
 import necesse.engine.modLoader.annotations.ModMethodPatch;
+import necesse.entity.levelEvent.explosionEvent.BombExplosionEvent;
+import necesse.entity.levelEvent.explosionEvent.ExplosionEvent;
+import necesse.entity.mobs.GameDamage;
+import necesse.entity.projectile.IronBombProjectile;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.gameObject.SurfaceGrassObject;
@@ -40,29 +44,11 @@ import net.bytebuddy.asm.Advice;
  *
  * "@Advice.Argument(n)" - The annotated parameter is mapped to the n argument passed into the target method.
  */
-@ModMethodPatch(target = SurfaceGrassObject.class, name = "getLootTable", arguments = {Level.class, int.class, int.class})
+@ModMethodPatch(target = IronBombProjectile.class, name = "getExplosionEvent", arguments = {float.class, float.class})
 public class ExampleMethodPatch {
 
-    /*
-        Other than printing debug messages, this is currently set up to override the loot table for surface grass.
-     */
-
-    @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class)
-    static boolean onEnter(@Advice.This SurfaceGrassObject grassObject, @Advice.Argument(0) Level level) {
-        // Debug message to know it's working
-        System.out.println("Entered SurfaceGrassObject.getLootTable(level, x, y): " + grassObject.getStringID() + " on level " + level.getIslandString());
-        // We return true to skip the original method's execution, since we override the returned loot table anyway.
-        // This only happens if you add "skipOn = Advice.OnNonDefaultValue.class" in the OnMethodEnter annotation.
-        // Naturally, you can also return false to not skip the original method.
-        return true;
-    }
-
     @Advice.OnMethodExit
-    static void onExit(@Advice.This SurfaceGrassObject grassObject, @Advice.Argument(0) Level level, @Advice.Return(readOnly = false) LootTable lootTable) {
-        // Grass now drops between 1 and 2 coins instead
-        lootTable = new LootTable(LootItem.between("coin", 1, 2));
-        // Debug message to know it's working
-        System.out.println("Exited SurfaceGrassObject.getLootTable(level, x, y): " + grassObject.getStringID() + " on level " + level.getIslandString() + " with new return value: " + lootTable);
+    static void onExit(@Advice.This IronBombProjectile bomb, @Advice.Argument(0) float x, @Advice.Argument(1) float y, @Advice.Return(readOnly = false) ExplosionEvent explosionEvent) {
+        explosionEvent = new BombExplosionEvent(x, y, 300, new GameDamage(200f, 1000f), true, 1, bomb.getOwner());
     }
-
 }

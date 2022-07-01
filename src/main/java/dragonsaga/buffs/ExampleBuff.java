@@ -1,5 +1,6 @@
-package dragonsaga.examples;
+package dragonsaga.buffs;
 
+import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
@@ -10,12 +11,14 @@ public class ExampleBuff extends Buff {
         canCancel = true;
         isVisible = true;
         shouldSave = true;
+        isPassive = true;
     }
 
     @Override
     public void init(ActiveBuff activeBuff) {
         // Apply modifiers here
-        activeBuff.setModifier(BuffModifiers.SPEED, 0.5f); // +50% speed
+        activeBuff.setModifier(BuffModifiers.SPEED, 2f);
+        ((PlayerMob)activeBuff.owner).look.setSkin(4);
     }
 
     @Override

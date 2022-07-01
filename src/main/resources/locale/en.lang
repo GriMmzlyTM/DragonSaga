@@ -8,15 +8,18 @@ exampleobject=Example Object
 exampleitem=Example Item
 examplesword=Example Sword
 examplestaff=Example Staff
+namekianracechange=Race Changer (Namekian)
+demongihat=Demon Gi Turban (Namekian)
 
 [itemtooltip]
 examplestafftip=Shoots a homing, piercing projectile
 
 [mob]
 examplemob=Example Mob
+martialartistbase=Krill Man (Human)
 
 [buff]
-examplebuff=Example Buff
+namekian=Namekian
 
 [ui]
 settingstest=Amazing Modded UI Button
