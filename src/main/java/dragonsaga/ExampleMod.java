@@ -14,7 +14,9 @@ import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.entity.mobs.HumanTexture;
+import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
+import necesse.entity.mobs.friendly.human.HumanMob;
 import necesse.gfx.GameMusic;
 import necesse.gfx.gameSound.GameSound;
 import necesse.gfx.gameTexture.GameTexture;
@@ -23,6 +25,7 @@ import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.maps.biomes.Biome;
 
+
 @ModEntry
 public class ExampleMod {
 
@@ -30,13 +33,11 @@ public class ExampleMod {
     public static Buff NAMEKIAN_RACE_BUFF;
 
     public void init() {
-        System.out.println("Hello world from my example mod!");
-
         // Register our tiles
         //TileRegistry.registerTile("exampletile", new ExampleTile(), 1, true);
 
         // Register out objects
-        //ObjectRegistry.registerObject("exampleobject", new ExampleObject(), 2, true);
+        ObjectRegistry.registerObject("medicalmachine", new ExampleObject(), 2, true);
 
         // Register our buff
         NAMEKIAN_RACE_BUFF = BuffRegistry.registerBuff("namekian", new ExampleBuff());
@@ -66,12 +67,9 @@ public class ExampleMod {
 
         // Quests
 
-
     }
 
     public void initResources() {
-        MobRegistry.Textures.rabbit = GameTexture.fromFile("mobs/examplemob");
-
         DragonMobDatabase.Textures.MartialArtistBase = new HumanTexture(
                 GameTexture.fromFile("mobs/martial_artist/MartialArtistBase"),
                 GameTexture.fromFile("mobs/martial_artist/MartialArtistBase_LeftArm"),
@@ -88,6 +86,8 @@ public class ExampleMod {
 
         // Register our server chat command
         CommandsManager.registerServerCommand(new ExampleChatCommand());
+
+        HumanMob.maleNames = new String[]{"Aaron", "Adam", "Alastair", "Albert", "Alexander", "Alfred", "Alton", "Andrew", "Archie", "Arthur", "Basil", "Ben", "Benny", "Billy", "Blake", "Brandon", "Brayden", "Brent", "Bruce", "Cain", "Calvin", "Carl", "Chad", "Charles", "Chris", "Cody", "Dale", "Darren", "Dave", "David", "Dean", "Dennis", "Devon", "Dexter", "Dustin", "Elvis", "Eric", "Francis", "Garrett", "Gavin", "Glen", "Harrison", "Henry", "Issac", "Jake", "James", "Jared", "Jason", "Jayden", "Jeff", "Jordan", "Josh", "Justin", "Kaine", "Karl", "Ken", "Kent", "King", "Kyle", "Larry", "Lloyd", "Marc", "Marco", "Mason", "Matthew", "Michael", "Mick", "Nick", "Oliver", "Olly", "Patrick", "Paul", "Peter", "Phil", "Philip", "Ricardo", "Ricky", "Rob", "Roger", "Samuel", "Scott", "Sean", "Seth", "Shane", "Shawn", "Sheldon", "Stan", "Steve", "Tim", "Tobias", "Tom", "Tony", "Troy", "Warren", "Will", "Zach"};
     }
 
 }

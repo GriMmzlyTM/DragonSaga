@@ -25,5 +25,14 @@ public class DragonRecipeRegistry {
                         new Ingredient("coin", 1)
                 }
         ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "medicalmachine",
+                1,
+                RecipeTechRegistry.NONE,
+                new Ingredient[]{
+                        new Ingredient("coin", 1)
+                }
+        ));
     }
 }

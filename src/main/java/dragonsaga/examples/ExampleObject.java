@@ -21,9 +21,9 @@ public class ExampleObject extends GameObject {
     private GameTexture texture;
 
     public ExampleObject() {
-        super(new Rectangle(4, 4, 26, 26)); // Collision relative to the tile it's placed on
+        super(new Rectangle(10, 0, 80, 96)); // Collision relative to the tile it's placed on
         // Remember that tiles are 32x32 pixels in size
-        hoverHitbox = new Rectangle(0, -32, 32, 64); // 2 tiles high mouse hover hitbox
+        hoverHitbox = new Rectangle(10, 0, 80, 96); // 2 tiles high mouse hover hitbox
         toolType = ToolType.ALL; // Can be broken by all tools
         isLightTransparent = true; // Lets light pass through
         mapColor = new Color(31, 150, 148); // Also applies as debris color if not set
@@ -32,7 +32,7 @@ public class ExampleObject extends GameObject {
     @Override
     public void loadTextures() {
         super.loadTextures();
-        texture = GameTexture.fromFile("objects/exampleobject");
+        texture = GameTexture.fromFile("objects/MedicalMachine");
     }
 
     @Override
