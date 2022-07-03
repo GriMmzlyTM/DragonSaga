@@ -1,41 +1,26 @@
 package dragonsaga.items.containers;
 
+import dragonsaga.race.DragonRace;
+import dragonsaga.registry.DragonRaceRegistry;
 import necesse.engine.network.NetworkClient;
 import necesse.inventory.container.Container;
 import necesse.inventory.container.customAction.BooleanCustomAction;
 import necesse.inventory.container.customAction.EmptyCustomAction;
+import necesse.inventory.container.customAction.EnumCustomAction;
 import necesse.inventory.container.customAction.IntCustomAction;
 
 public class RaceChangeContainer extends Container {
 
-    BooleanCustomAction boolTest;
-    IntCustomAction intTest;
-    EmptyCustomAction emptyTest;
-
-    boolean booleanValue;
-    int intValue;
+    public EnumCustomAction<DragonRaceRegistry.RaceEnum> playerRaceButton;
+    EmptyCustomAction applyRace;
 
     public RaceChangeContainer(NetworkClient client, int uniqueSeed) {
         super(client, uniqueSeed);
 
-        this.boolTest = this.registerAction(new BooleanCustomAction() {
+        this.playerRaceButton = this.registerAction(new EnumCustomAction<DragonRaceRegistry.RaceEnum>(DragonRaceRegistry.RaceEnum.class) {
             @Override
-            protected void run(boolean b) {
-                booleanValue = b;
-            }
-        });
-
-        this.intTest = this.registerAction(new IntCustomAction() {
-            @Override
-            protected void run(int i) {
-                intValue = i;
-            }
-        });
-
-        this.emptyTest = this.registerAction(new EmptyCustomAction() {
-            @Override
-            protected void run() {
-
+            protected void run(DragonRaceRegistry.RaceEnum race) {
+                DragonRace.Instance.ChangePlayerRaceNextTick(client.playerMob, race);
             }
         });
 

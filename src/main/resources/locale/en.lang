@@ -9,6 +9,9 @@ exampleitem=Example Item
 examplesword=Example Sword
 examplestaff=Example Staff
 namekianracechange=Race Changer (Namekian)
+dragonhumanracechanget1=Race Changer (Human T1 - Farmer)
+dragonhumanracechanget2=Race Changer (Human T2 - Martial Artist)
+dragonhumanracechanget3=Race Changer (Human T3 - Guardian)
 demongihat=Demon Gi Turban (Namekian)
 
 [itemtooltip]
@@ -20,6 +23,9 @@ martialartistbase=Krill Man (Human)
 
 [buff]
 namekian=Namekian
+dragon_human_low=T1 Human T1 (Farmer)
+dragon_human=Human T2 (Martial Artist)
+dragon_human_guardian=Human T3 (Guardian)
 
 [ui]
 settingstest=Amazing Modded UI Button

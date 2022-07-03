@@ -47,8 +47,8 @@ import net.bytebuddy.asm.Advice;
 @ModMethodPatch(target = IronBombProjectile.class, name = "getExplosionEvent", arguments = {float.class, float.class})
 public class ExampleMethodPatch {
 
-    @Advice.OnMethodExit
-    static void onExit(@Advice.This IronBombProjectile bomb, @Advice.Argument(0) float x, @Advice.Argument(1) float y, @Advice.Return(readOnly = false) ExplosionEvent explosionEvent) {
-        explosionEvent = new BombExplosionEvent(x, y, 300, new GameDamage(200f, 1000f), true, 1, bomb.getOwner());
-    }
+//    @Advice.OnMethodExit
+//    static void onExit(@Advice.This IronBombProjectile bomb, @Advice.Argument(0) float x, @Advice.Argument(1) float y, @Advice.Return(readOnly = false) ExplosionEvent explosionEvent) {
+//        explosionEvent = new BombExplosionEvent(x, y, 300, new GameDamage(200f, 1000f), true, 1, bomb.getOwner());
+//    }
 }

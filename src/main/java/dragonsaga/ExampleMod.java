@@ -1,28 +1,29 @@
 package dragonsaga;
 
-import dragonsaga.buffs.ExampleBuff;
+import dragonsaga.buffs.DragonBuffRegistry;
 import dragonsaga.database.DragonMobDatabase;
-import dragonsaga.examples.*;
-import dragonsaga.items.RaceChangeItem;
+import dragonsaga.examples.ExampleChatCommand;
+import dragonsaga.examples.ExampleObject;
 import dragonsaga.items.containers.RaceChangeContainer;
 import dragonsaga.mobs.human.KrillManMob;
-import dragonsaga.mobs.human.MartialArtistMob;
+import dragonsaga.network.packet.PacketDragonRaceChange;
 import dragonsaga.registry.DragonItemRegistry;
 import dragonsaga.registry.DragonRecipeRegistry;
 import dragonsaga.ui.RaceChangeMenuForm;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
+import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.registries.*;
 import necesse.entity.mobs.HumanTexture;
-import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
+import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.setBonusBuffs.SimpleSetBonusBuff;
 import necesse.entity.mobs.friendly.human.HumanMob;
-import necesse.gfx.GameMusic;
-import necesse.gfx.gameSound.GameSound;
 import necesse.gfx.gameTexture.GameTexture;
-import necesse.inventory.recipe.Ingredient;
-import necesse.inventory.recipe.Recipe;
-import necesse.inventory.recipe.Recipes;
+import necesse.inventory.InventoryItem;
+import necesse.inventory.item.armorItem.ArmorModifiers;
+import necesse.inventory.item.armorItem.SetHelmetArmorItem;
 import necesse.level.maps.biomes.Biome;
 
 
@@ -40,7 +41,7 @@ public class ExampleMod {
         ObjectRegistry.registerObject("medicalmachine", new ExampleObject(), 2, true);
 
         // Register our buff
-        NAMEKIAN_RACE_BUFF = BuffRegistry.registerBuff("namekian", new ExampleBuff());
+        DragonBuffRegistry.Register();
 
         // Register our items
         DragonItemRegistry.Register();
@@ -63,7 +64,7 @@ public class ExampleMod {
         // World Gen
 
         // Packet
-        PacketRegistry.registerPacket(ExamplePacket.class);
+        PacketRegistry.registerPacket(PacketDragonRaceChange.class);
 
         // Quests
 
@@ -87,7 +88,6 @@ public class ExampleMod {
         // Register our server chat command
         CommandsManager.registerServerCommand(new ExampleChatCommand());
 
-        HumanMob.maleNames = new String[]{"Aaron", "Adam", "Alastair", "Albert", "Alexander", "Alfred", "Alton", "Andrew", "Archie", "Arthur", "Basil", "Ben", "Benny", "Billy", "Blake", "Brandon", "Brayden", "Brent", "Bruce", "Cain", "Calvin", "Carl", "Chad", "Charles", "Chris", "Cody", "Dale", "Darren", "Dave", "David", "Dean", "Dennis", "Devon", "Dexter", "Dustin", "Elvis", "Eric", "Francis", "Garrett", "Gavin", "Glen", "Harrison", "Henry", "Issac", "Jake", "James", "Jared", "Jason", "Jayden", "Jeff", "Jordan", "Josh", "Justin", "Kaine", "Karl", "Ken", "Kent", "King", "Kyle", "Larry", "Lloyd", "Marc", "Marco", "Mason", "Matthew", "Michael", "Mick", "Nick", "Oliver", "Olly", "Patrick", "Paul", "Peter", "Phil", "Philip", "Ricardo", "Ricky", "Rob", "Roger", "Samuel", "Scott", "Sean", "Seth", "Shane", "Shawn", "Sheldon", "Stan", "Steve", "Tim", "Tobias", "Tom", "Tony", "Troy", "Warren", "Will", "Zach"};
     }
 
 }

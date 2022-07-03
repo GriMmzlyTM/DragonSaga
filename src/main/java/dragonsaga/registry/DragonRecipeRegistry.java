@@ -9,7 +9,7 @@ public class DragonRecipeRegistry {
 
     public static void Register() {
         Recipes.registerModRecipe(new Recipe(
-                "namekianracechange",
+                "dragonhumanracechanget1",
                 1,
                 RecipeTechRegistry.NONE,
                 new Ingredient[]{
@@ -18,7 +18,16 @@ public class DragonRecipeRegistry {
         ));
 
         Recipes.registerModRecipe(new Recipe(
-                "demongihat",
+                "dragonhumanracechanget2",
+                1,
+                RecipeTechRegistry.NONE,
+                new Ingredient[]{
+                        new Ingredient("coin", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "dragonhumanracechanget3",
                 1,
                 RecipeTechRegistry.NONE,
                 new Ingredient[]{

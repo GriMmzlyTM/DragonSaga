@@ -1,13 +1,14 @@
 package dragonsaga.items;
 
 import dragonsaga.ExampleMod;
-import dragonsaga.races.DragonRace;
+import dragonsaga.race.DragonRace;
+import dragonsaga.race.RaceBase;
+import dragonsaga.registry.DragonRaceRegistry;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.packet.PacketOpenContainer;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.ContainerRegistry;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.container.Container;
@@ -19,15 +20,15 @@ import java.util.function.Supplier;
 
 public class RaceChangeItem extends Item {
 
-    public DragonRace.RaceEnum Race;
-    public DragonRace.RaceBase BaseStats;
+    public DragonRaceRegistry.RaceEnum Race;
+    public RaceBase BaseStats;
 
-    public RaceChangeItem(DragonRace.RaceEnum race) {
+    public RaceChangeItem(DragonRaceRegistry.RaceEnum race, Rarity raceRarity) {
         super(1);
 
         Race = race;
-        BaseStats = DragonRace.Instance.GetRaceBase(race);
-        rarity = Rarity.LEGENDARY;
+        BaseStats = DragonRaceRegistry.Instance.GetRace(race);
+        rarity = raceRarity;
     }
 
     @Override
@@ -43,8 +44,6 @@ public class RaceChangeItem extends Item {
             if (slot.getInventory() == container.getClient().playerMob.getInv().main) {
                 if (container.getClient().isServerClient()) {
                     ServerClient client = container.getClient().getServerClient();
-                    ActiveBuff activeBuff = new ActiveBuff(ExampleMod.NAMEKIAN_RACE_BUFF, player, Integer.MAX_VALUE, null );
-                    player.buffManager.addBuff(activeBuff, true);
                     PacketOpenContainer p = new PacketOpenContainer(ExampleMod.RACE_CHANGE_CONTAINER);
                     ContainerRegistry.openAndSendContainer(client, p);
                 }
