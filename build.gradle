@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.0'
 }
 
 // Change the values below this to your mods values
@@ -30,6 +30,7 @@ project.ext.clientside = false
 // The path to the games install directory
 def gameDirectory = "G:\\SteamLibrary\\steamapps\\common\\Necesse"
 
+
 // =================================================
 // ========== DO NOT EDIT BELOW THIS LINE ==========
 // =================================================
@@ -42,6 +43,9 @@ version project.ext.modVersion
 
 setSourceCompatibility(JavaVersion.VERSION_1_8)
 setTargetCompatibility(JavaVersion.VERSION_1_8)
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
 
 repositories {
     mavenCentral()
@@ -49,6 +53,10 @@ repositories {
 
 sourceSets.main.output.resourcesDir = file("build/mod/resources/")
 sourceSets.main.java.outputDir = file("build/mod/")
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    // Tell KotlinCompile to output to our outputDir like how Java does it
+    destinationDirectory = sourceSets.main.java.outputDir
+}
 def buildLocation = "build/jar"
 
 compileJava.options.encoding = "UTF-8"
@@ -58,12 +66,15 @@ if (!file(gameDirectory + "/Necesse.jar").exists()) {
 }
 
 dependencies {
-    implementation files(gameDirectory + "/Necesse.jar")
-    implementation fileTree(gameDirectory + "/lib/")
-    implementation fileTree("./mods/") // Add all mods located in local mods folder
+    compileOnly files(gameDirectory + "/Necesse.jar")
+    compileOnly fileTree(gameDirectory + "/lib/")
+    compileOnly fileTree("./mods/") // Add all mods located in local mods folder
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
 
 classes.doLast {
+    sourceSets.main.java.outputDir.mkdirs()
     // Creates mod.info file
     new File("${sourceSets.main.java.outputDir}/mod.info").text = "{\n" +
             "   id = ${project.ext.modID},\n" +
@@ -129,7 +140,12 @@ task buildModJar(type: Jar) {
     dependsOn "classes"
 
     // Add mod output
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
     from sourceSets.main.java.outputDir
+    // Grab implementation dependencies and package them into the jar
+    from {
+        configurations.runtimeClasspath.files.collect {it.isDirectory() ? it : zipTree(it)}
+    }.exclude 'META-INF/**'
 
     archiveName "${jarName}.jar"
     destinationDir file(buildLocation)

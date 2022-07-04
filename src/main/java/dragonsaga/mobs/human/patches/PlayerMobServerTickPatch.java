@@ -1,6 +1,6 @@
 package dragonsaga.mobs.human.patches;
 
-import dragonsaga.race.DragonRace;
+import race.DragonRace;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;

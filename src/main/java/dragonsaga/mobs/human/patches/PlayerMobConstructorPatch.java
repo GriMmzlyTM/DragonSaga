@@ -1,6 +1,6 @@
 package dragonsaga.mobs.human.patches;
 
-import dragonsaga.race.DragonRace;
+import race.DragonRace;
 import necesse.engine.modLoader.annotations.ModConstructorPatch;
 import necesse.engine.network.NetworkClient;
 import necesse.entity.mobs.PlayerMob;
