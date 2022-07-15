@@ -1,4 +1,4 @@
-package ai
+package dragonsaga.ai
 
 import dragonsaga.mobs.MartialArtistMob
 import necesse.engine.util.gameAreaSearch.GameAreaStream

@@ -1,11 +1,13 @@
 package dragonsaga.buffs
 
+import dragonsaga.race.PlayerLookCache
+import necesse.entity.mobs.Mob
 import necesse.entity.mobs.PlayerMob
 import necesse.entity.mobs.buffs.ActiveBuff
-import necesse.entity.mobs.buffs.staticBuffs.Buff
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff
+import necesse.gfx.HumanLook
 
-class ExampleBuff : TrinketBuff() {
+abstract class RacialBuff : TrinketBuff(), IOnRemoveBuff {
     init {
         canCancel = false
         isVisible = true
@@ -14,11 +16,16 @@ class ExampleBuff : TrinketBuff() {
     }
 
     override fun init(activeBuff: ActiveBuff) {
+
+        var player : PlayerMob = activeBuff.owner as PlayerMob;
+
         // Apply modifiers here
-        //activeBuff.setModifier(BuffModifiers.SPEED, 2f);
-        (activeBuff.owner as PlayerMob).speed = 60f
-        (activeBuff.owner as PlayerMob).friction = 7f
-        (activeBuff.owner as PlayerMob).look.skin = 4
+        player.speed = 60f
+        player.friction = 7f
+
+    }
+
+    override fun OnRemove(buff: ActiveBuff, mob: Mob) {
     }
 
     override fun serverTick(buff: ActiveBuff) {

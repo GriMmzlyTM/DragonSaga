@@ -1,6 +1,6 @@
 package dragonsaga.network.packet
 
-import race.DragonRace
+import dragonsaga.race.DragonRace
 import dragonsaga.registry.RaceEnum
 import necesse.engine.network.NetworkPacket
 import necesse.engine.network.Packet

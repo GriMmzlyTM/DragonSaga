@@ -1,7 +1,7 @@
 package dragonsaga.items
 
 import ModEntrypoint
-import race.RaceBase
+import dragonsaga.race.RaceBase
 import dragonsaga.registry.DragonRaceRegistry
 import dragonsaga.registry.RaceEnum
 import necesse.engine.localization.Localization

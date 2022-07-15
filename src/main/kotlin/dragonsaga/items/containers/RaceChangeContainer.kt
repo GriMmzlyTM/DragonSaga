@@ -1,7 +1,7 @@
 package dragonsaga.items.containers
 
 import dragonsaga.registry.RaceEnum
-import race.DragonRace
+import dragonsaga.race.DragonRace
 import necesse.engine.network.NetworkClient
 import necesse.inventory.container.Container
 import necesse.inventory.container.customAction.EmptyCustomAction

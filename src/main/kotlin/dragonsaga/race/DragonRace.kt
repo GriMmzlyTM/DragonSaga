@@ -1,4 +1,4 @@
-package race
+package dragonsaga.race
 
 import dragonsaga.registry.DragonRaceRegistry
 import dragonsaga.registry.RaceEnum

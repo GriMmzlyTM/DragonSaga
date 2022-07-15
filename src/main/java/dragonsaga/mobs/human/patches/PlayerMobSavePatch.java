@@ -1,6 +1,6 @@
 package dragonsaga.mobs.human.patches;
 
-import race.DragonRace;
+import dragonsaga.race.DragonRace;
 import dragonsaga.registry.DragonRaceRegistry;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.save.SaveData;

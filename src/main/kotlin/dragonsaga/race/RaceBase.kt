@@ -1,4 +1,4 @@
-package race
+package dragonsaga.race
 
 import dragonsaga.registry.RaceEnum
 import necesse.entity.mobs.buffs.staticBuffs.Buff

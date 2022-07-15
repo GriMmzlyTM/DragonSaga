@@ -1,7 +1,7 @@
 package dragonsaga.registry
 
-import race.RaceBase
-import race.Stats
+import dragonsaga.race.RaceBase
+import dragonsaga.race.Stats
 
 enum class RaceEnum {
     // Human

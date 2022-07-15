@@ -1,4 +1,4 @@
-package race
+package dragonsaga.race
 
 class Stats(
     var HP: Float, var Def: Float, // Basic survivablilty stats

@@ -23,8 +23,8 @@ class ModEntrypoint {
 
         // Register out objects
         DragonObjectRegistry.RegisterAll()
-
         DragonBuffRegistry.RegisterAll()
+        DragonProjectileRegistry.RegisterAll()
         DragonItemRegistry.RegisterAll()
         DragonMobRegistry.RegisterAll()
 
